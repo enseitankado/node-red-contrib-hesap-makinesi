@@ -1,0 +1,95 @@
+<script type="text/javascript">
+    RED.nodes.registerType('hesap-makinesi',{
+        category: 'function',
+        color: '#FDF0C2',
+        defaults: {
+            name: {value:""},
+			sayi1: {value:0},
+			sayi2: {value:0}
+        },
+        inputs:1,
+        outputs:4,
+        icon: "function.png",
+        label: function() {
+            return this.name || "Hesap Makinesi v1.0";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="hesap-makinesi">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i>Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-tips"><b>İpucu:</b> Node için bir isim girebilirsiniz. Eğer isim girilmez ise 
+	node üzerinde varsayılan nolarak <code>"Hesap Makinesi v1.0"</code> ifadesi gösterilir.</div>
+</script>
+
+<script type="text/html" data-help-name="hesap-makinesi">
+	<p>Bu node girişine uygulanan 2 sayıyı 4 işleme (+,-,*,/) tabi tutarak işlem sonuçlarını çıkışlarına aktarmaktadır. Ayrıca 0 bölme hatasının kontrol edildiği bir istisna yakalama yöntemine örnek oluşturmaktadır.<p>
+
+	<h3>Girişler</h3>
+    <dl class="message-properties">
+        <dt>msg.sayi1 <span class="property-type">number</span></dt>
+        <dd> İşleme alınacak 1. sayı</dd>
+        <dt>msg.sayi2<span class="property-type">number</span></dt>
+        <dd> İşleme alınacak 2. sayı</dd>
+    </dl>
+
+	<h3>Çıkışlar</h3>
+	<ol class="node-ports">
+    <li>Toplam sonucu
+        <dl class="message-properties">
+            <dt>msg.toplam <span class="property-type">number</span></dt>
+            <dd>sayi1 ve sayi2'nin toplamı</dd>
+        </dl>
+    </li>
+    <li>Fark sonucu
+        <dl class="message-properties">
+            <dt>msg.fark <span class="property-type">number</span></dt>
+            <dd>sayi1'in sayi2'den farkı</dd>
+        </dl>
+    </li>
+    <li>Çarpım sonucu
+        <dl class="message-properties">
+            <dt>msg.carpim <span class="property-type">number</span></dt>
+            <dd>sayi1 ile sayi2'nin çarpımı</dd>
+        </dl>
+    </li>
+    <li>Bölüm sonucu
+        <dl class="message-properties">
+            <dt>msg.bolum <span class="property-type">number</span></dt>
+            <dd>sayi1'in sayi2'ye bölümünün sonucu</dd>
+        </dl>
+    </li>
+
+	</ol>
+
+	Hesap makinesinin <code>msg.bolum</code> çıktısı ilginç sonuçlar verebilir.
+
+	<h3>Ayrıntılar</h3>
+	<p>Bu hesap makinesi temel olarak; gelen <code>msg</code> nesnesinin icindeki 
+	<code>sayi1</code> ve <code>sayi2</code> ozelliklerini dört temel aritmetik işleme tabi tutarak her sonucu 
+	farklı bir çıkış olarak vermektedir..
+
+    <p>Ek olarak, bu node 0'a bölüm hatasının kontrolü için	üç farklı yöntem kullanmaktadır.
+	<ol>
+		<li class="item">Try-catch yapısı ile hata oluşma ihtimali olan bölge 
+		kontrol altına alınarak, hata durumunda Node-RED genelinde </code>Catch Node</code>
+		ile yakalanabilecek bir mesaj yayınlanmaktadır.</li>
+
+		<li>Günlük kaydı oluşturularak, node-red-log ve journalctl araçlarıyla izlenebilmesi 
+		sağlanmıştır. SystemD'ın journalctl aracını kullanarak nodered servisinin mesajlarını
+		şu komut ile dinleyebilirsiniz: <code>sudo journalctl -f -u nodered</code> </li>
+
+		<li>Node'un akış editöründeki simgesi üzerinde status mesajı kullanılarak,
+		hata bildiriminde bulunmaktadır.</li>
+		</ol>
+
+	<h3>Referanslar</h3>
+    <ul>
+        <li><a>Node-RED docs</a> - https://nodered.org/docs/creating-nodes/</li>
+        <li><a>Node'un GitHub Sayfası</a>https://github.com/enseitankado/node-red-contrib-hesap-makinesi</li>
+    </ul>
+
+</script>
