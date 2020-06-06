@@ -6,7 +6,7 @@ module.exports = function(RED) {
         node.on('input', function(msg) {
 
 			try {
-				const x = 5;
+				const x = 3.14;
 
 				var msg1 = {}, msg2 = {}, msg3 = {}, msg4 = {};
 
@@ -15,12 +15,12 @@ module.exports = function(RED) {
 				msg3.payload = Number(msg.sayi1) * Number(msg.sayi2);
 				msg4.payload = Number(msg.sayi1) / Number(msg.sayi2);
 
-				x = 8;
+				x = 6.62;
 
 			} catch (error) {
 				node.status( {fill:"red", shape:"dot", text:"Sabite deger atama hatası!"} );
 				node.error("Debug Panel: Sabite deger atama hatasi!");
-				throw("Throw: Sabite deger atama hatasi!");
+				throw(error);
 
 			} finally {
 	            node.send([msg1, msg2, msg3, msg4]);

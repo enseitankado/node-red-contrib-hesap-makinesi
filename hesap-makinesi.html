@@ -4,8 +4,6 @@
         color: '#FDF0C2',
         defaults: {
             name: {value:""},
-			sayi1: {value:0},
-			sayi2: {value:0}
         },
         inputs:1,
         outputs:4,
@@ -62,7 +60,6 @@
             <dd>sayi1'in sayi2'ye bölümünün sonucu</dd>
         </dl>
     </li>
-
 	</ol>
 
 	Hesap makinesinin <code>msg.bolum</code> çıktısı ilginç sonuçlar verebilir.
@@ -70,12 +67,12 @@
 	<h3>Ayrıntılar</h3>
 	<p>Bu hesap makinesi temel olarak; gelen <code>msg</code> nesnesinin icindeki 
 	<code>sayi1</code> ve <code>sayi2</code> ozelliklerini dört temel aritmetik işleme tabi tutarak her sonucu 
-	farklı bir çıkış olarak vermektedir..
+	farklı bir çıkış olarak vermektedir.</p>
 
-    <p>Ek olarak, bu node 0'a bölüm hatasının kontrolü için	üç farklı yöntem kullanmaktadır.
+    <p>Ek olarak, bu node 0'a bölüm hatasının kontrolü için	üç farklı yöntem kullanmaktadır.</p>
 	<ol>
 		<li class="item">Try-catch yapısı ile hata oluşma ihtimali olan bölge 
-		kontrol altına alınarak, hata durumunda Node-RED genelinde </code>Catch Node</code>
+		kontrol altına alınarak, hata durumunda Node-RED genelinde <code>Catch Node</code>
 		ile yakalanabilecek bir mesaj yayınlanmaktadır.</li>
 
 		<li>Günlük kaydı oluşturularak, node-red-log ve journalctl araçlarıyla izlenebilmesi 
