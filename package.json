@@ -12,7 +12,7 @@
   "license": "ISC",
   "node-red" : {
         "nodes": {
-            "string-uzunluk-bul": "hesap-makinesi.js"
+            "hesap-makinesi": "hesap-makinesi.js"
         }
     }
 }

@@ -1,5 +1,6 @@
 module.exports = function(RED) {
     function HesapMakinesiNode(config) {
+
         RED.nodes.createNode(this, config);
 
         var node = this;
@@ -27,5 +28,6 @@ module.exports = function(RED) {
 			}
         });
     }
+
     RED.nodes.registerType("hesap-makinesi", HesapMakinesiNode);
 }
